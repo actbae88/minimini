@@ -1,28 +1,45 @@
 import styled from "styled-components"
+import { useState } from 'react'
 
-const Image = ({image})=>{
-    return(
-        <div>
-            {/* "title": "벡터 심장 사랑 아이콘, 심장 아이콘, 사랑 아이콘, 심장 PNG, 일러스트 및 벡터 에 대한 무료 다운로드 - Pngtree",
-            "link": "https://png.pngtree.com/png-vector/20190505/ourlarge/pngtree-vector-heart-love-icon-png-image_1022282.jpg",
-            "thumbnail": "https://search.pstatic.net/sunny/?type=b150&src=https://png.pngtree.com/png-vector/20190505/ourlarge/pngtree-vector-heart-love-icon-png-image_1022282.jpg",
-            "sizeheight": "640",
-            "sizewidth": "640" */}
+const Image = ({ image }) => {
 
-            <Container>
-                link : {image.link}
-                <br></br>
-                <img src={image.thumbnail} alt="사진"></img>
-            </Container>
 
-        </div>
+    const [imgSrc, setImgSrc] = useState(image.thumbnail)
+
+
+    return (
+
+
+        <Item>
+            <a href={image.link} target="_blank">
+                <img
+                    className="img"
+                    src={image.thumbnail}
+                    alt="사진"
+                   
+                />
+            </a>
+        </Item>
+
+
     )
 }
 export default Image
 
-const Container = styled.div`
-    border: 1px solid firebrick;
-    padding: 20;
-    background-color: aliceblue;
-    margin: 20;
-`
+
+const Item = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        border: 1px solid lightcoral;
+        border-radius: 12px;
+       padding: 4px;
+
+        .img{
+            width: 100%;
+            border-radius: 30%;
+            border: 1px solid firebrick;
+        }
+    `
+

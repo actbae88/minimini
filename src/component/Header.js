@@ -1,9 +1,25 @@
 import { FaPinterest } from "react-icons/fa6";
 import styled from 'styled-components'
+import { useState } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import { changeQuery } from "../redux/query";
 
 const Header = () => {
+
+    const [searchQuery, setSearchQuery] = useState("")
+
+    // Hook으로..store의 information 보여주기..
+    const information = useSelector(state=>state.informationReducer.information)
+    const dispatch = useDispatch()
+
+   
+
     return (
+
+        
         <Head>
+            <p>쿼리는 : {information.query}</p>
+            <p onClick={()=>dispatch(changeQuery('kokodfdsf'))}>누르면바뀌는쿼리는 :{information.query} </p>
 
             {/* 핀터레스트 아이콘 */}
             <FaPinterest id="pinterest" />
@@ -16,13 +32,23 @@ const Header = () => {
             </select>
 
 
-            <form className="search">
-                <input placeholder="검색"></input>
+            <form className="search" onSubmit={(event) => {
+                event.preventDefault()
+                dispatch(changeQuery(searchQuery))
+                //searchQuery가 바뀔때 Main에서 다시 api받아오기.. 
+            }}>
+                <input placeholder="검색" value={searchQuery} onChange={(event) => {
+                    setSearchQuery(event.target.value)
+                }}></input>
             </form>
         </Head>
+
+        
     )
 }
 export default Header
+
+
 
 const Head = styled.div`
     border: 1px dotted black;
