@@ -4,9 +4,10 @@ import { useState } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { changeQuery } from "../redux/query";
 
-const Header = () => {
+const Header = ({selectedOption, setSelectedOption}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
+   
 
     // Hook으로..store의 information 보여주기..
     const information = useSelector(state=>state.informationReducer.information)
@@ -18,29 +19,34 @@ const Header = () => {
 
         
         <Head>
-            <p>쿼리는 : {information.query}</p>
-            <p onClick={()=>dispatch(changeQuery('kokodfdsf'))}>누르면바뀌는쿼리는 :{information.query} </p>
+            
+            <p style={{border:'1px solid red'}} onClick={()=>dispatch(changeQuery('kokodfdsf'))}>누르면바뀌는쿼리는 :{information.query} </p>
 
             {/* 핀터레스트 아이콘 */}
             <FaPinterest id="pinterest" />
 
             &nbsp;
             {/* 셀렉터 */}
-            <select>
+            <select value={selectedOption} onChange={(event)=>setSelectedOption(event.target.value)}>
                 <option value={'home'}>홈</option>
                 <option value={'make'}>만들기</option>
             </select>
 
 
-            <form className="search" onSubmit={(event) => {
-                event.preventDefault()
-                dispatch(changeQuery(searchQuery))
-                //searchQuery가 바뀔때 Main에서 다시 api받아오기.. 
-            }}>
-                <input placeholder="검색" value={searchQuery} onChange={(event) => {
-                    setSearchQuery(event.target.value)
-                }}></input>
-            </form>
+            {/* option - make 클릭 시  아래 form 안보이게*/}
+            {selectedOption !== "make" && (
+                <form className="search" onSubmit={(event) => {
+                    event.preventDefault()
+                    dispatch(changeQuery(searchQuery))
+                    //searchQuery가 바뀔때 Main에서 다시 api받아오기.. 
+                }}>
+                    <input placeholder="검색" value={searchQuery} onChange={(event) => {
+                        setSearchQuery(event.target.value)
+                    }}></input>
+                </form>
+            )}
+
+            
         </Head>
 
         

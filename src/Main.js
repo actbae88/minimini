@@ -3,12 +3,15 @@ import Body1 from "./component/Body1"
 import Header from "./component/Header"
 import styled from "styled-components"
 import { useSelector } from "react-redux"
+import Make from "./page/Make"
 
 
 const Main = () => {
 
     const [images, setImages] = useState(null)
-    const information = useSelector(state=>state.informationReducer.information)
+    const [selectedOption, setSelectedOption] = useState("home");
+
+    const information = useSelector(state => state.informationReducer.information)
 
     const client_id = 'FtDMxIe4fgO50ebkOGVF'
     const client_secret = 'Hk6wVoxydU'
@@ -17,43 +20,27 @@ const Main = () => {
     useEffect(() => {
         // const query = '사랑'
         const display = 100
-        fetch('/v1/search/image?query=' + information.query + '&display='+display, {
-            method: 'GET',
-            headers: {
-                "X-Naver-Client-Id": client_id,
-                "X-Naver-Client-Secret": client_secret,
-            }
-        }).then(res => res.json()).then(json => setImages(json.items)).catch(e => alert(e.message))
-    }, [information])
+        const url = './backend/naver_search.php?query=' + information.query+'&display='+display
+        fetch(url).then(res => res.json()).then(json => setImages(json.items)).catch(e => alert(e.message))
+    }, [information, selectedOption])
 
 
 
     
 
 
-
-
-    //backend썼을떄...
-    const clickBtn2 = () => {
-        const query = '사랑'
-        const url = './backend/naver_search.php?query=' + query
-
-        fetch(url).then(res => res.json()).then(json => setImages(json.items))
-            .catch(e => alert('에러 : ' + e.message))
-    }
-
-
     return (
         <Root>
 
-            <Header></Header>
-
-            {
+            <Header selectedOption={selectedOption} setSelectedOption={setSelectedOption}></Header>
+            {/* selectedOption이 home일때는 <Body1>붙이고, make일때는 <Make>붙이기</Make> */}
+            {selectedOption === "home" ? (
                 images ? <Body1 images={images}></Body1> : <p>Loading....</p>
-            }
+            ) : (
+                <Make></Make>
+            )}
 
-
-            <button onClick={clickBtn2}> 서버에서..</button>
+         
 
         </Root>
     )
