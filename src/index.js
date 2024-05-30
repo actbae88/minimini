@@ -8,6 +8,10 @@ import Main from './Main';
 import {combineReducers, legacy_createStore as createStore} from 'redux'
 import {Provider} from 'react-redux'
 import informationReducer from './redux/query';
+import SignUp from './page/SignUp';
+import Make from './page/Make';
+import Body1 from './component/Body1';
+import Header from './component/Header';
 
 
 
@@ -21,6 +25,10 @@ root.render(
       combineReducers( {informationReducer})
     )}>
     <Main></Main>
+    <SignUp></SignUp>
+    <Make></Make>
+    <Body1></Body1>
+    <Header></Header>
   </Provider>
 );
 

@@ -49,7 +49,10 @@ if ($result) {
 
     // 이미지파일경로가 있는 경우에만, 데이터베이스에 추가하기
     if(!empty($imgs)) {
+        var_dump($imgs);
+
         $imgPaths = implode(',', $imgs); //이미지파일경로를 쉽표구분해서 문자열로 변환
+        // $sqlUpdateImgs = "INSERT INTO minimini "
         $sqlUpdateImgs = "UPDATE minimini SET imgs='$imgPaths' WHERE id='$id'";
         $resultUpdateImgs = mysqli_query($db, $sqlUpdateImgs);
         if($resultUpdateImgs){

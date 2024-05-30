@@ -29,11 +29,24 @@ const Header = ({selectedOption, setSelectedOption}) => {
             {/* 셀렉터 */}
             <select value={selectedOption} onChange={(event)=>setSelectedOption(event.target.value)}>
                 <option value={'home'}>홈</option>
+                <option value={'signup'}>가입하기</option>
                 <option value={'make'}>만들기</option>
             </select>
 
 
-            {/* option - make 클릭 시  아래 form 안보이게*/}
+            {/* option - signup 클릭 시  아래 form 안보이게*/}
+            {selectedOption !== "signup" && (
+                <form className="search" onSubmit={(event) => {
+                    event.preventDefault()
+                    dispatch(changeQuery(searchQuery))
+                    //searchQuery가 바뀔때 Main에서 다시 api받아오기.. 
+                }}>
+                    <input placeholder="검색" value={searchQuery} onChange={(event) => {
+                        setSearchQuery(event.target.value)
+                    }}></input>
+                </form>
+            )}
+             {/* option - make 클릭 시  아래 form 안보이게*/}
             {selectedOption !== "make" && (
                 <form className="search" onSubmit={(event) => {
                     event.preventDefault()

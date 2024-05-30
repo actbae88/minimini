@@ -3,7 +3,9 @@ import Body1 from "./component/Body1"
 import Header from "./component/Header"
 import styled from "styled-components"
 import { useSelector } from "react-redux"
+import SignUp from "./page/SignUp"
 import Make from "./page/Make"
+
 
 
 const Main = () => {
@@ -29,23 +31,29 @@ const Main = () => {
     
 
 
-    return (
+    return(
         <Root>
 
             <Header selectedOption={selectedOption} setSelectedOption={setSelectedOption}></Header>
+
             {/* selectedOption이 home일때는 <Body1>붙이고, make일때는 <Make>붙이기</Make> */}
-            {selectedOption === "home" ? (
+            selectedOption === "home" ? (
                 images ? <Body1 images={images}></Body1> : <p>Loading....</p>
-            ) : (
+            ) : selectedOption === "signup" ? (
+                <SignUp></SignUp>
+            ) : selectedOption === "make" ? (
                 <Make></Make>
-            )}
+            )
+        
+
+            
 
          
 
         </Root>
     )
-}
 
+}
 export default Main
 
 const Root = styled.div`
