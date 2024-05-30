@@ -67,6 +67,7 @@ const SignUp = () => {
     const files = fileRef.current.files
     
 
+
     // 서버전송 택배상자
     const formData = new FormData()
     formData.append('id', id)
