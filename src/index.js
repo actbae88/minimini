@@ -15,6 +15,8 @@ import Header from './component/Header';
 
 
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -25,10 +27,7 @@ root.render(
       combineReducers( {informationReducer})
     )}>
     <Main></Main>
-    <SignUp></SignUp>
-    <Make></Make>
-    <Body1></Body1>
-    <Header></Header>
+    
   </Provider>
 );
 

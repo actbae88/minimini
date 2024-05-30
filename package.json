@@ -40,6 +40,8 @@
       "last 1 safari version"
     ]
   },
- "homepage": "http://baechu10.dothome.co.kr/react/minimini"
+  "homepage": "http://baechu10.dothome.co.kr/react/minimini",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
-
