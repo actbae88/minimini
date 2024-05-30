@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+// header('Content-Type: text/plain; charset=utf-8');
 
 //글씨로 받은 데이터
 $id = $_POST['id'];
@@ -9,8 +10,9 @@ $month = $_POST['month'];
 $gender = $_POST['gender'];
 $mans = implode('ㅎㅎ', $_POST['mans']); //배열을 문자열로 변환
 
-// echo "아이디: $id 비밀번호: $pw 태어난 해: $year \n
-// 태어난 달: $month 성별: $gender 좋아하는남성들: $mansList";
+// 여기까진 성공 echo "에코된거 : $id $pw $year $month $gender $mans";
+
+
 
 $response = array();
 
@@ -51,9 +53,9 @@ if ($result) {
         $sqlUpdateImgs = "UPDATE minimini SET imgs='$imgPaths' WHERE id='$id'";
         $resultUpdateImgs = mysqli_query($db, $sqlUpdateImgs);
         if($resultUpdateImgs){
-            $response["message"] .= "이미지 파일이 성공적으로 업로드되었습니다. ";
+            $response["message"] .= "이미지 파일이 성공적으로 업로드되었습니다.";
         } else {
-            $response["message"] .= "이미지 파일업로드에 실패하였습니다. ";
+            $response["message"] .= "이미지 파일업로드에 실패하였습니다.";
         }
     }
 

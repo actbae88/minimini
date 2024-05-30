@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useRef } from "react";
 
+
 const Make = () => {
   //url parameter받기.. 서브경로[/make/:id] 이때 :id가 변수명
   const param = useParams();
@@ -76,10 +77,10 @@ const Make = () => {
         formData.append('imgs[]', file)
     }
 
-    fetch('../backend/signup.php',{
+    fetch('./backend/signup.php',{
         method:'POST',
         body: formData,
-    }).then(res=>res.text()).then(text=>alert(text)).catch(e=>alert(e.message))
+    }).then(res=>res.text()).then(json=>console.log(json)).catch(e=>alert("에러"+e.message))
     
   };
 
