@@ -1,7 +1,7 @@
 const Make= ()=>{
     return(
         <div>
-            dd
+            여기는 Make페이지입니다. 
         </div>
     )
 

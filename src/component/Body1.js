@@ -2,8 +2,9 @@ import { useState } from "react"
 import Image from './Image'
 import styled from "styled-components"
 import Pagination from "./Pagination"
+import { useParams } from "react-router-dom"
 
-const Body1 = ({ images }) => {
+const Body1 = ({images}) => {
 
     //한 페이지에 표시할 이미지개수 저장state변수
     const [number, setNumber] = useState(30)
@@ -18,7 +19,7 @@ const Body1 = ({ images }) => {
 
             <div className="items">
                 {
-                    images.slice(number * (page - 1), number * (page - 1) + number)
+                    images.slice(number * (page - 1), number * page)
                         .map((image, index, array) => {
                             return <Image image={image} key={index}></Image>
                         })

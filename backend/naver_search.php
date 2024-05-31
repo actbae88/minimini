@@ -1,8 +1,10 @@
 <?php
     header('Content-Type:application/json; charset=utf-8');
+    header('Access-Control-Allow-Origin: *');// CORS 문제 해결을 위해 추가
 
     // GET방식으로 전달된 검색어 query
     $query = $_GET['query'];
+    $display = $_GET['display'];
 
     //php에서 다른 서버의 http request를 수행하는 기능이 있다. curl 라이브러리..
     //client  url 나는 서버지만 클라이언트처럼 요청하겠다. 터미널의명령어..
@@ -10,7 +12,7 @@
     // 영어는 걍 보내도되는데 한글은 무조건 이 작업 필요함. 
     $encQuery = urlencode($query);
 
-    $url= "https://openapi.naver.com/v1/search/image?query=".$encQuery;
+    $url= "https://openapi.naver.com/v1/search/image?query=".$encQuery."&display=".$display;
   
 
     //1.curl 작업 시작 - 초기화

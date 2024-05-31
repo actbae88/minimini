@@ -34,24 +34,11 @@ const Header = ({selectedOption, setSelectedOption}) => {
             </select>
 
 
-            {/* option - signup 클릭 시  아래 form 안보이게*/}
-            {selectedOption !== "signup" && (
+            {/* option - home일때만  폼나오게*/}
+            {selectedOption === "home" && (
                 <form className="search" onSubmit={(event) => {
                     event.preventDefault()
                     dispatch(changeQuery(searchQuery))
-                    //searchQuery가 바뀔때 Main에서 다시 api받아오기.. 
-                }}>
-                    <input placeholder="검색" value={searchQuery} onChange={(event) => {
-                        setSearchQuery(event.target.value)
-                    }}></input>
-                </form>
-            )}
-             {/* option - make 클릭 시  아래 form 안보이게*/}
-            {selectedOption !== "make" && (
-                <form className="search" onSubmit={(event) => {
-                    event.preventDefault()
-                    dispatch(changeQuery(searchQuery))
-                    //searchQuery가 바뀔때 Main에서 다시 api받아오기.. 
                 }}>
                     <input placeholder="검색" value={searchQuery} onChange={(event) => {
                         setSearchQuery(event.target.value)

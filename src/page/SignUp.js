@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useRef } from "react";
-
+import {useSelector, useDispatch} from 'react-redux';
+import {loginUserInfo} from "../redux/account";
 
 
 const SignUp = () => {
@@ -9,8 +10,13 @@ const SignUp = () => {
   const [month, setMonth] = useState("월");
   const [gender, setGender] = useState("male");
   const [mans, setMans] = useState([]);
+ 
 //   파일리더로 읽어들인 파일의 URL정보 저장 state변수
   const [imageUrls, setImageUrls] = useState([])
+// user정보 보여주기
+  const userInfo = useSelector(state=>state.userInformationReducer.userInformation)
+//회원가입하면 유저정보 보여주기
+  const dispatch = useDispatch()
 
   const idRef = useRef(null);
   const pwRef = useRef(null)
@@ -81,7 +87,15 @@ const SignUp = () => {
     fetch('./backend/signup.php',{
         method:'POST',
         body: formData,
-    }).then(res=>res.text()).then(json=>console.log(json)).catch(e=>alert("에러"+e.message))
+    }).then(res=>res.json()).then(json=>{
+      console.log(json)
+      const loginId = json.data.id
+      dispatch(loginUserInfo(
+        id, pw, year, month, gender, mans, files
+      )
+    )
+  
+    }).catch(e=>alert("에러"+e.message))
     
   };
 
@@ -200,6 +214,9 @@ const SignUp = () => {
 
 
       </form>
+
+
+      <p>로그인한 사용자는? {userInfo.id}, {userInfo.pw}</p>
     </div>
   );
 };

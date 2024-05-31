@@ -19,7 +19,8 @@ export default function informationReducer(state = initState, action) {
                  information: {
                     ...state.information,
                     query: action.query
-                 } }
+                 } 
+            }
         default:
             return state
     }

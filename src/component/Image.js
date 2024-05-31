@@ -11,7 +11,7 @@ const Image = ({ image }) => {
 
 
         <Item>
-            <a href={image.link} target="_blank">
+            <a href={image.link} target="_blank" rel="noopener noreferrer">
                 <img
                     className="img"
                     src={image.thumbnail}
