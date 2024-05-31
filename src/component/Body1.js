@@ -14,10 +14,12 @@ const Body1 = ({images}) => {
     return (
         <Container>
             <div>
-                <h3>바디1.이미지들..</h3>
+                <h3>바디..이미지들..   </h3>
             </div>
 
             <div className="items">
+
+
                 {
                     images.slice(number * (page - 1), number * page)
                         .map((image, index, array) => {
