@@ -16,6 +16,8 @@ import userInformationReducer from './redux/account';
 
 
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -25,12 +27,7 @@ root.render(
   <Provider store={createStore(
       combineReducers( {informationReducer, userInformationReducer})
     )}>
-<<<<<<< HEAD
     <PageRouter></PageRouter>
-=======
-    <Main></Main>
-    
->>>>>>> 02820ee879f1980188db5280034de3367fa5cd59
   </Provider>
 );
 
