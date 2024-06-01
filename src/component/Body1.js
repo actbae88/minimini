@@ -13,13 +13,8 @@ const Body1 = ({images}) => {
 
     return (
         <Container>
-            <div>
-                <h3>바디..이미지들..   </h3>
-            </div>
 
             <div className="items">
-
-
                 {
                     images.slice(number * (page - 1), number * page)
                         .map((image, index, array) => {
@@ -44,21 +39,23 @@ const Body1 = ({images}) => {
 export default Body1
 
 const Container = styled.div`
-    border: 1px dotted red;
+    margin-top: 12px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
+    
+   
     
     
-
     .items{
-        
-        width: 100%;
         display: flex;
+        flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 5px;
+        width: 100%;
+        gap: 10px;
+        
     }
    
 `

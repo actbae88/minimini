@@ -1,6 +1,6 @@
 const initState = {
     information: {
-        query: 'love',
+        query: '보홀',
     }
 }
 

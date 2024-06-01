@@ -28,18 +28,21 @@ export default Image
 
 
 const Item = styled.div`
+        margin-top: 12px;
+        box-sizing: border-box;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 20%;
-        border: 1px solid lightcoral;
-        border-radius: 12px;
-       padding: 4px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 20px;
+        min-width: 300px;
+        max-width: 500px;
+     
+
+       
 
         .img{
-            width: 100%;
-            border-radius: 30%;
-            border: 1px solid firebrick;
+            min-height: 300px;
+            border-radius: 10%;
         }
     `
 
