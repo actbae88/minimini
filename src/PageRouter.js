@@ -6,6 +6,7 @@ import Body1 from "./component/Body1";
 
 const PageRouter = () => {
   return (
+<<<<<<< HEAD
       //서브경로가 있는 웹호스팅 서버를 사용한다면.. index.html페이지 위치를 잘못 인식할 수 있음.
     <BrowserRouter basename={ process.env.PUBLIC_URL}>
       <Routes>
@@ -24,6 +25,19 @@ const PageRouter = () => {
 
       </Routes>
     </BrowserRouter>
+=======
+    <div></div>
+    // <BrowserRouter>
+    //   <Routes>
+    //     {/* root url -- localhost:3000/ 일때 Main하겠다. */}
+    //     {/* <Route path="/" element={<Main></Main>}></Route>
+
+
+    //     <Route path="/make" element={<Make></Make>}></Route> */}
+
+    //   </Routes>
+    // </BrowserRouter>
+>>>>>>> f7f6008 (그냥확인)
   );
 };
 

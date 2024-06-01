@@ -23,8 +23,16 @@ const Main = () => {
 
     useEffect(() => {
         // const query = '사랑'
+<<<<<<< HEAD
         const url = './backend/naver_search.php?query=' + information.query+'&display=' + 100
         fetch(url).then(res => res.json()).then(json => setImages(json.items)).catch(e => alert(e.message))
+=======
+        const display = 100
+        const url = './backend/naver_search.php?query=' + information.query+'&display='+display
+        // fetch(url).then(res => res.json()).then(json => setImages(json.items)).catch(e => alert(e.message))
+    fetch(url).then(res=>res.text()).then(text=>console.log(text)).catch(e=>alert(e))
+    
+>>>>>>> f7f6008 (그냥확인)
     }, [information, selectedOption])
 
 
