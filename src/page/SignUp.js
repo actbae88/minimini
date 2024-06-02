@@ -8,8 +8,7 @@ import da from "../images/da.jpeg";
 import ha from "../images/ha.jpeg";
 
 const SignUp = () => {
-  //url parameter받기.. 서브경로[/make/:id] 이때 :id가 변수명
-  const param = useParams();
+  
   const [month, setMonth] = useState("월");
   const [gender, setGender] = useState("male");
   const [mans, setMans] = useState([]);
@@ -81,6 +80,8 @@ const SignUp = () => {
       formData.append("imgs[]", file);
     }
 
+    console.log(formData)
+
     fetch("./backend/signup.php", {
       method: "POST",
       body: formData,
@@ -88,8 +89,13 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
-        const loginId = json.data.id;
-        dispatch(loginUserInfo(id, pw, year, month, gender, mans, files));
+        if (json.data && json.data.id) {
+          const loginId = json.data.id;
+          alert(`${loginId}님 환영합니다^^`);
+          dispatch(loginUserInfo(id, pw, year, month, gender, mans, files));
+        } else {
+          console.error("ID가 응답에 포함되어 있지 않습니다.");
+        }
       })
       .catch((e) => alert("에러" + e.message));
   };

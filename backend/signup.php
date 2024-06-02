@@ -10,17 +10,13 @@ $month = $_POST['month'];
 $gender = $_POST['gender'];
 $mans = implode('ㅎㅎ', $_POST['mans']); //배열을 문자열로 변환
 
-// 여기까진 성공 echo "에코된거 : $id $pw $year $month $gender $mans";
-
-
-
 $response = array();
+$response["data"] = array();
+$response["data"]["id"] = $id;
 
-
-// MySQL DB 에 저장 (테이블 : minimini)
 $db = mysqli_connect("localhost", "baechu10", "a1s2d3f4!", "baechu10");
 mysqli_query($db, "set names utf8");
-//삽입 : id, pw, year, month, gender, mans, imgs
+
 $sql = "INSERT INTO minimini(id, pw, year, month, gender, mans) VALUES('$id','$pw','$year','$month','$gender','$mans')";
 $result = mysqli_query($db, $sql);
 
@@ -49,8 +45,7 @@ if ($result) {
 
     // 이미지파일경로가 있는 경우에만, 데이터베이스에 추가하기
     if(!empty($imgs)) {
-          
-
+        
         $imgPaths = implode(',', $imgs); //이미지파일경로를 쉽표구분해서 문자열로 변환
         // $sqlUpdateImgs = "INSERT INTO minimini "
         $sqlUpdateImgs = "UPDATE minimini SET imgs='$imgPaths' WHERE id='$id'";
@@ -62,7 +57,7 @@ if ($result) {
         }
     }
 
-    $response['imgs'] = $imgs;
+    $response["data"]["imgs"] = $imgs;
 } else {
     $response["success"] = false;
     $response["message"] = "회원가입이 실패하였습니다. ";

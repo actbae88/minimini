@@ -26,23 +26,25 @@ const Image = ({ image }) => {
 }
 export default Image
 
-
+//    gap: 20px;
+//margin-right: 10px;
 const Item = styled.div`
-        margin-top: 12px;
+        margin-top: 30px;
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 20px;
-        min-width: 300px;
-        max-width: 500px;
+        justify-content: center;
+     
+        width: 100%;
+        max-width: 300px;
+        
      
 
        
 
         .img{
+            width: 100%;
             min-height: 300px;
             border-radius: 10%;
         }
     `
-
