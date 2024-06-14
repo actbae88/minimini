@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   /* 추가하기 */
+   background-color: white;
+   font-family: 'Times New Roman', Times, serif;
+   padding: 0px;
 }
 
 code {
