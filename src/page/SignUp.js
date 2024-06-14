@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useRef } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { loginUserInfo } from "../redux/account";
 import styled from "styled-components";
@@ -28,6 +29,7 @@ const SignUp = () => {
   const yearRef = useRef(null);
   const fileRef = useRef(null);
 
+
   const changeCheckbox = (value) => {
     if (mans.includes(value)) {
       const newMans = mans.filter((man, index, array) => {
@@ -39,6 +41,7 @@ const SignUp = () => {
       setMans(mans.concat(value));
     }
   };
+
 
   const changeFiles = (event) => {
     const files = event.target.files;
@@ -56,10 +59,15 @@ const SignUp = () => {
     }
   };
 
+
+
+
+
   const submitData = (event) => {
     event.preventDefault();
 
     const id = idRef.current.value;
+
     const pw = pwRef.current.value;
     const pw2 = pw2Ref.current.value;
     const year = yearRef.current.value;
